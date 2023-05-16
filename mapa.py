@@ -57,8 +57,3 @@ class Mapa:
 
         # Ejecuta el comando para compilar el archivo renombrado
         subprocess.run(['xelatex', '-synctex=1', '-interaction=nonstopmode', f"{self.nombre_archivo}.tex"], check=True)
-
-p = Mapa('mapa_IPC', output_dir='output2')
-p.agregar_datos([5.86, 12.4, 7.27, 8.98, 7.85, 8.98, 11.72, 7.54])
-p.hacer_mapa()
-p.compilar()
