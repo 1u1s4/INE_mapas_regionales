@@ -21,16 +21,15 @@ class Mapa:
         # Define el mapa de colores personalizado
         cmap = colors.LinearSegmentedColormap.from_list("", ['#6363DB', '#3F46BF', '#000080'])
 
-        fig, ax = plt.subplots(figsize=(13.5, 10))  # Crea una figura y ejes con un tamaño específico
+        fig, ax = plt.subplots()  # Crea una figura y ejes con un tamaño específico
 
         # Desactiva la leyenda, establece el color de borde a blanco y el grosor a 1.5
-        self.tracts.plot(column="nueva_columna", cmap=cmap, edgecolor="white", linewidth=1.5, legend=False, ax=ax)
+        self.tracts.plot(column="nueva_columna", cmap=cmap, edgecolor="white", linewidth=0.7, legend=False, ax=ax)
+        
         ax.axis('off')  # Desactiva los ejes
 
-        plt.savefig(f"{self.nombre_archivo}.pdf", format='pdf', bbox_inches='tight')  # Guarda la figura como PDF
-        plt.show()  # Muestra la figura
+        plt.savefig(f"{self.nombre_archivo}.pdf", format='pdf', dpi=100, bbox_inches='tight')  # Guarda la figura como PDF
 
-
-p = Mapa('hola')
+p = Mapa('mapaRegional')
 p.agregar_datos([61, 770, 1168, 775, 863, 1722, 673, 648])
 p.hacer_mapa()
