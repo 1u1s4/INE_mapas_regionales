@@ -1,4 +1,4 @@
-from mapa import Mapa
+from src.mapa import Mapa
 import pandas as pd
 
 # Crear una instancia de la clase Mapa
