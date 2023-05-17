@@ -1,8 +1,8 @@
-from src.mapa import Mapa
+from colorimapgt import mapa
 import pandas as pd
 
 # Crear una instancia de la clase Mapa
-m = Mapa(
+m = mapa.Mapa(
     nombre_archivo='miMapa',
     datos=pd.DataFrame({
           'region': ['Región I', 'Región II', 'Región III', 'Región IV', 'Región V', 'Región VI', 'Región VII', 'Región VIII'],

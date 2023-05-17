@@ -1,4 +1,6 @@
 output
 output2
 __pycache__
-```
+*.ipynb
+mapa_regional_INE.egg-info
+build

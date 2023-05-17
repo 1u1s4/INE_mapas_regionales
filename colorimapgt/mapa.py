@@ -1,23 +1,24 @@
 import os
 import shutil
 import subprocess
+import pkg_resources
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
 class Mapa:
-    def __init__(self, nombre_archivo: str, datos: pd.DataFrame=pd.DataFrame({}), shape_file: str='regiones/regiones.shp', output_dir: str='output') -> None:
+    def __init__(self, nombre_archivo: str, datos: pd.DataFrame=pd.DataFrame({}), output_dir: str='output') -> None:
         self.datos = datos
         self.nombre_archivo = nombre_archivo
-        self.tracts = gpd.read_file(shape_file)
+        self.tracts = gpd.read_file(pkg_resources.resource_filename(__name__, 'regiones/regiones.shp'))
         self.output_dir = output_dir
 
         # Crear el directorio si no existe
         os.makedirs(self.output_dir, exist_ok=True)
 
         # Copiar y renombrar el archivo plantilla.tex al directorio de salida
-        shutil.copy('plantilla.tex', os.path.join(self.output_dir, f"{self.nombre_archivo}.tex"))
+        shutil.copy(pkg_resources.resource_filename(__name__, 'plantilla.tex'), os.path.join(self.output_dir, f"{self.nombre_archivo}.tex"))
 
     def agregar_datos(self, datos_nuevos: list) -> None:
         self.datos = pd.DataFrame({
