@@ -3,10 +3,8 @@ import shutil
 import subprocess
 import pandas as pd
 import geopandas as gpd
-import time
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
-from pdf2image import convert_from_path
 
 class Mapa:
     def __init__(self, nombre_archivo: str, datos: pd.DataFrame=pd.DataFrame({}), shape_file: str='regiones/regiones.shp', output_dir: str='output') -> None:
@@ -61,34 +59,3 @@ class Mapa:
 
         # Ejecuta el comando para compilar el archivo renombrado
         subprocess.run(['xelatex', '-synctex=1', '-interaction=nonstopmode', f"{self.nombre_archivo}.tex"], check=True)
-
-    def convertir_a_png(self):
-        # Crea un nombre de archivo para la imagen png
-        nombre_imagen_png = os.path.join(self.output_dir, f"{self.nombre_archivo}.png")
-        
-        # Usa convert_from_path para convertir el pdf a png
-        images = convert_from_path(os.path.join(self.output_dir, f"{self.nombre_archivo}.pdf"))
-
-        # Guarda la primera imagen (página) del pdf como png
-        images[0].save(nombre_imagen_png, 'PNG')
-
-        return nombre_imagen_png
-
-
-# Crear una instancia de la clase Mapa
-m = Mapa(
-    nombre_archivo='miMapa',
-    datos=pd.DataFrame({
-          'region': ['Región I', 'Región II', 'Región III', 'Región IV', 'Región V', 'Región VI', 'Región VII', 'Región VIII'],
-          'valores': [1, 2, 3, 4, 5, 6, 7, 8]
-          })
-    )
-
-# Hacer el mapa
-m.hacer_mapa()
-
-# Compilar el archivo LaTeX
-m.compilar()
-
-# Convertir el PDF a PNG
-m.convertir_a_png()
