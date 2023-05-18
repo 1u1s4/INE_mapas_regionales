@@ -29,10 +29,6 @@ Las contribuciones son bienvenidas. Si deseas mejorar este proyecto, sigue los s
 4. Envía tus cambios al repositorio remoto (`git push origin feature/nueva-funcion`).
 5. Abre una solicitud de extracción en GitHub.
 
-## Licencia
-
-Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
-
 ## Contacto
 
 Si tienes alguna pregunta o sugerencia, no dudes en contactarme a través de mi dirección de correo electrónico [laalvarado@ine.gob.gt](mailto:laalvarado@ine.gob.gt).
