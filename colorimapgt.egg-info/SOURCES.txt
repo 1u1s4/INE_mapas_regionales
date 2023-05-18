@@ -1,3 +1,4 @@
+README.md
 setup.py
 colorimapgt/__init__.py
 colorimapgt/mapa.py
@@ -12,3 +13,5 @@ colorimapgt/regiones/regiones.dbf
 colorimapgt/regiones/regiones.prj
 colorimapgt/regiones/regiones.shp
 colorimapgt/regiones/regiones.shx
+testing/__init__.py
+testing/mapa_test.py

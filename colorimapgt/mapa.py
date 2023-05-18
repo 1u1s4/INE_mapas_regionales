@@ -55,8 +55,14 @@ class Mapa:
             file.write("\\def \\regionOcho{" + str(datos[7]) + "}\n")
 
     def compilar(self):
+        # Guarda el directorio de trabajo original
+        original_dir = os.getcwd()
+
         # Cambia al directorio de salida
         os.chdir(self.output_dir)
 
         # Ejecuta el comando para compilar el archivo renombrado
         subprocess.run(['xelatex', '-synctex=1', '-interaction=nonstopmode', f"{self.nombre_archivo}.tex"], check=True)
+
+        # Vuelve al directorio de trabajo original
+        os.chdir(original_dir)
