@@ -3,4 +3,4 @@ output2
 __pycache__
 *.ipynb
 build
-colorimapgt.egg-info
+colorimapgt.egg-info/
