@@ -1,4 +1,4 @@
-# INE_mapas_regionales
+# colorimapgt
 
 # Mapas Colorimétricos Regionales de Guatemala
 
