@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: mapa-regional-INE
+Version: 0.4.1
+Summary: Mapas colorimetricos a nivel regional de Guatemala.
+Home-page: https://github.com/1u1s4/INE_mapas_regionales
+Author: Luis Alfredo Alvarado Rodríguez
+Keywords: development,setup,setuptools
+Requires-Python: >=3.9
