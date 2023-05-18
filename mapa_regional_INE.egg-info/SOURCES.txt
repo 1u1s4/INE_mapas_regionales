@@ -1,8 +1,0 @@
-setup.py
-colorimapgt/__init__.py
-colorimapgt/mapa.py
-mapa_regional_INE.egg-info/PKG-INFO
-mapa_regional_INE.egg-info/SOURCES.txt
-mapa_regional_INE.egg-info/dependency_links.txt
-mapa_regional_INE.egg-info/requires.txt
-mapa_regional_INE.egg-info/top_level.txt
