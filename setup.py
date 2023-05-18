@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='colorimapgt',
-    version='0.5.3',
+    version='0.6.1',
     author='Luis Alfredo Alvarado Rodríguez',
     description='Mapas colorimetricos a nivel regional de Guatemala.',
     long_description='',
@@ -16,7 +16,7 @@ setup(
         'matplotlib'
     ],
     package_data={
-        'colorimapgt': ['colorimapgt/regiones/*', 'plantilla.tex'],
+        'colorimapgt': ['regiones/*', 'plantilla.tex'],
     },
     include_package_data=True,
 )
