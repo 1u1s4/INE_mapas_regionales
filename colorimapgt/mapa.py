@@ -98,16 +98,3 @@ class Mapa:
 
         # Vuelve al directorio de trabajo original
         os.chdir(original_dir)
-
-
-# Crear una instancia de la clase Mapa
-m = Mapa(
-    nombre_archivo='miMapa',
-    datos=pd.DataFrame({
-          'region': ['Región I', 'Región II', 'Región III', 'Región IV', 'Región V', 'Región VI', 'Región VII', 'Región VIII'],
-          'valores': [1, 2, 3, 4, 5, 6, 7, 8]
-          }),
-    color_base='#EB5BB1'
-    )
-m.hacer_mapa()
-m.compilar()
