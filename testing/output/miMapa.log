@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.14)  18 MAY 2023 11:42
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.4.14)  18 MAY 2023 12:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -593,7 +593,7 @@ File: mapa_sin_anotar.pdf Graphic file (type pdf)
 ] (./miMapa.aux) ) 
 Here is how much of TeX's memory you used:
  21307 strings out of 476675
- 482847 string characters out of 5807326
+ 482845 string characters out of 5807326
  1853290 words of memory out of 5000000
  41282 multiletter control sequences out of 15000+600000
  512383 words of font info for 44 fonts, out of 8000000 for 9000
