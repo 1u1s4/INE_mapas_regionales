@@ -10,12 +10,19 @@ import matplotlib.colors as colors
 import matplotlib.colors as mcolors
 
 class Mapa:
-    def __init__(self, nombre_archivo: str, datos: pd.DataFrame=pd.DataFrame({}), output_dir: str='output', color_base: str='#3F46BF') -> None:
+    def __init__(
+        self,
+        nombre_archivo: str,
+        datos: pd.DataFrame=pd.DataFrame({}),
+        output_dir: str='output',
+        color_base: str='#3F46BF',
+        decimales: int=2) -> None:
         self.datos = datos
         self.nombre_archivo = nombre_archivo
         self.tracts = gpd.read_file(pkg_resources.resource_filename(__name__, 'regiones/regiones.shp'))
         self.output_dir = output_dir
         self.color_base = color_base
+        self.decimales = decimales
 
         # Crear el directorio si no existe
         os.makedirs(self.output_dir, exist_ok=True)
@@ -78,14 +85,14 @@ class Mapa:
             datos = self.datos['valores'].values
             file.write("\\definecolor{color1}{RGB}" + color_1 + "\n")
             file.write("\\definecolor{color2}{RGB}" + color_2 + "\n")
-            file.write("\\def \\regionUno{" + str(datos[0]) + "}\n")
-            file.write("\\def \\regionDos{" + str(datos[1]) + "}\n")
-            file.write("\\def \\regionTres{" + str(datos[2]) + "}\n")
-            file.write("\\def \\regionCuatro{" + str(datos[3]) + "}\n")
-            file.write("\\def \\regionCinco{" + str(datos[4]) + "}\n")
-            file.write("\\def \\regionSeis{" + str(datos[5]) + "}\n")
-            file.write("\\def \\regionSiete{" + str(datos[6]) + "}\n")
-            file.write("\\def \\regionOcho{" + str(datos[7]) + "}\n")
+            file.write("\\def \\regionUno{" + "{:.{}f}".format(datos[0], self.decimales) + "}\n")
+            file.write("\\def \\regionDos{" + "{:.{}f}".format(datos[1], self.decimales) + "}\n")
+            file.write("\\def \\regionTres{" + "{:.{}f}".format(datos[2], self.decimales) + "}\n")
+            file.write("\\def \\regionCuatro{" + "{:.{}f}".format(datos[3], self.decimales) + "}\n")
+            file.write("\\def \\regionCinco{" + "{:.{}f}".format(datos[4], self.decimales) + "}\n")
+            file.write("\\def \\regionSeis{" + "{:.{}f}".format(datos[5], self.decimales) + "}\n")
+            file.write("\\def \\regionSiete{" + "{:.{}f}".format(datos[6], self.decimales) + "}\n")
+            file.write("\\def \\regionOcho{" + "{:.{}f}".format(datos[7], self.decimales) + "}\n")
 
     def compilar(self):
         # Guarda el directorio de trabajo original
