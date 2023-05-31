@@ -102,7 +102,8 @@ class Mapa:
         os.chdir(self.output_dir)
 
         # Ejecuta el comando para compilar el archivo renombrado
-        subprocess.run(['xelatex', '-synctex=1', '-interaction=nonstopmode', f"{self.nombre_archivo}.tex"], check=True)
+        subprocess.run(['xelatex', '-synctex=1', '-interaction=nonstopmode', f"{self.nombre_archivo}.tex"],
+                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
 
         # Vuelve al directorio de trabajo original
         os.chdir(original_dir)
