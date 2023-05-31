@@ -1,4 +1,5 @@
 import os
+import math
 import shutil
 import subprocess
 import pkg_resources
@@ -9,13 +10,30 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import matplotlib.colors as mcolors
 
+def custom_round(number, decimals=0):
+    multiplier = 10 ** decimals
+    return math.ceil(number * multiplier) / multiplier
+
 class Mapa:
-    def __init__(self, nombre_archivo: str, datos: pd.DataFrame=pd.DataFrame({}), output_dir: str='output', color_base: str='#3F46BF') -> None:
-        self.datos = datos
+    def __init__(
+        self,
+        nombre_archivo: str='nombre_por_defecto',
+        datos: pd.DataFrame=None,
+        output_dir: str='output',
+        color_base: str='#3F46BF',
+        decimales: int=2) -> None:
+        # Si no se proporciona un DataFrame, se crea uno vacío
+        if datos is None:
+            self.datos = pd.DataFrame(columns=['region', 'valores'])
+        else:
+            datos['valores'] = datos['valores'].apply(lambda x: custom_round(x, decimales))
+            self.datos = datos
+
         self.nombre_archivo = nombre_archivo
         self.tracts = gpd.read_file(pkg_resources.resource_filename(__name__, 'regiones/regiones.shp'))
         self.output_dir = output_dir
         self.color_base = color_base
+        self.decimales = decimales
 
         # Crear el directorio si no existe
         os.makedirs(self.output_dir, exist_ok=True)
@@ -49,8 +67,9 @@ class Mapa:
         return colors[50:100] # Esto también puede necesitar ser ajustado dependiendo de cómo quieras que se vea la escala de colores
 
     def agregar_datos(self, datos_nuevos: list) -> None:
+        datos_nuevos = [custom_round(dato, self.decimales) for dato in datos_nuevos]
         self.datos = pd.DataFrame({
-            'region': ['Región I', 'Región II', 'Región III', 'Región IV', 'Región V', 'Región VI', 'Región VII', 'Región VIII'],
+            'region': ['Región I', 'Región II', 'Región III', 'Región IV', 'Región V', 'Región V', 'Región VI', 'Región VII', 'Región VIII'],
             'valores': datos_nuevos
         })
 

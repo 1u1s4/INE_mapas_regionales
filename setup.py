@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='colorimapgt',
-    version='0.6.6',
+    version='0.6.7',
     author='Luis Alfredo Alvarado Rodríguez',
     description='Mapas colorimetricos a nivel regional de Guatemala.',
     long_description='',
