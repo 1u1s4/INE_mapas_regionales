@@ -9,7 +9,8 @@ m = mapa.Mapa(
           'region': ['Región I', 'Región II', 'Región III', 'Región IV', 'Región V', 'Región VI', 'Región VII', 'Región VIII'],
           'valores': random.sample(range(1, 100), 8)
           }),
-    color_base='#EB5BB1'
+    color_base='#EB5BB1',
+    decimales=0
     )
 
 # Hacer el mapa
