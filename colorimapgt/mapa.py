@@ -99,21 +99,3 @@ class Mapa:
 
         # Vuelve al directorio de trabajo original
         os.chdir(original_dir)
-
-import random
-import pandas as pd
-
-# Crear una instancia de la clase Mapa
-m = Mapa(
-    nombre_archivo='miMapa',
-    datos=pd.DataFrame({
-          'region': ['Región I', 'Región II', 'Región III', 'Región IV', 'Región V', 'Región VI', 'Región VII', 'Región VIII'],
-          'valores': random.sample(range(1, 100), 8)
-          })
-    )
-
-# Hacer el mapa
-m.hacer_mapa()
-
-# Compilar el archivo LaTeX
-m.compilar()
