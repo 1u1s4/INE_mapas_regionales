@@ -29,7 +29,14 @@ cmap = colors.LinearSegmentedColormap.from_list("", escala_de_color)
 
 fig, ax = plt.subplots()  # Crea una figura y ejes con un tamaño específico
 tracts.plot(column="departamen", cmap=cmap, edgecolor="white", linewidth=0.7, legend=False, ax=ax)
-print(tracts)
+
+# Cálcula los centroides y los muestra en el gráfico
+centroides = tracts.geometry.centroid
+centroides.plot(ax=ax, color='red', marker='o', markersize=5)
+
 ax.axis('off')  # Desactiva los ejes
+
+# Guarda la figura como un PDF
+plt.savefig('mi_mapa.pdf', format='pdf')
 
 plt.show()
