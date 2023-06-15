@@ -18,3 +18,5 @@ m.hacer_mapa()
 
 # Compilar el archivo LaTeX
 m.compilar()
+
+m.limpiar()
