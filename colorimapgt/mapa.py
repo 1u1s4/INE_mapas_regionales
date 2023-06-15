@@ -108,11 +108,13 @@ class Mapa:
         # Vuelve al directorio de trabajo original
         os.chdir(original_dir)
 
-    def eliminar_archivos(self):
-            # Lista de patrones de archivos para eliminar
-            patrones_para_eliminar = ['*.aux', '*.synctex.gz', '*.log', 'mapa_sin_anotar.pdf', 'datos.tex', f"{self.nombre_archivo}.tex"]
+    def limpiar(self):
+        """
+        Elimina los archivos auxiliares generados por xelatex, así como el archivo de datos y el archivo .tex
+        """
+        patrones_para_eliminar = ['*.aux', '*.synctex.gz', '*.log', 'mapa_sin_anotar.pdf', 'datos.tex', f"{self.nombre_archivo}.tex"]
 
-            for patron in patrones_para_eliminar:
-                archivos = glob.glob(os.path.join(self.output_dir, patron))
-                for archivo in archivos:
-                    os.remove(archivo)
+        for patron in patrones_para_eliminar:
+            archivos = glob.glob(os.path.join(self.output_dir, patron))
+            for archivo in archivos:
+                os.remove(archivo)
