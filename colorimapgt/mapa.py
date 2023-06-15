@@ -106,3 +106,10 @@ class Mapa:
 
         # Vuelve al directorio de trabajo original
         os.chdir(original_dir)
+
+    def eliminar_archivos(self):
+        # Lista de archivos para eliminar
+        archivos_para_eliminar = ['*.aux', '*.synctex.gz', '*.log', 'mapa_sin_anotar.pdf', 'datos.tex', f"{self.nombre_archivo}.tex"]
+
+        for archivo in archivos_para_eliminar:
+            os.remove(os.path.join(self.output_dir, archivo))
