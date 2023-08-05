@@ -1,15 +1,14 @@
-from colorimapgt import mapa
+from colorimapgt import Mapa
 import random
 import pandas as pd
 
 # Crear una instancia de la clase Mapa
-m = mapa.Mapa(
+m = Mapa(
     nombre_archivo='miMapa',
     datos=pd.DataFrame({
           'region': ['Región I', 'Región II', 'Región III', 'Región IV', 'Región V', 'Región VI', 'Región VII', 'Región VIII'],
-          'valor': random.sample(range(1, 100), 8)
+          'valor': [2804, 1166, 1628, 1099, 1321, 3622, 820, 968]
           }),
-    color_base='#EB5BB1',
     precision=0
     )
 
