@@ -20,7 +20,7 @@ class Mapa:
         precision: int=2) -> None:
         self.datos = datos
         self.nombre_archivo = nombre_archivo
-        self.tracts = gpd.read_file(pkg_resources.resource_filename(__name__, 'regiones/regiones.shp'))
+        self.tracts = gpd.read_file(pkg_resources.resource_filename(__name__, 'regiones/regiones_y_belice.shp'))
         self.output_dir = output_dir
         self.color_base = color_base
         self.precision = precision
@@ -64,15 +64,28 @@ class Mapa:
 
     def hacer_mapa(self) -> None:
         for reg in self.datos['region']:
+            # Añadir columna de valor asociado a cada región en el GeoDataFrame de los trazos
             self.tracts.loc[self.tracts['region'] == reg, 'valor'] = self.datos.loc[self.datos['region'] == reg, 'valor'].values[0]
+        # Separar entre trazos de regiones de Guatemala y trazos de Belice
+        solo_belice = self.tracts[self.tracts["region"] == "Belice"]
+        solo_guatemala = self.tracts[self.tracts["region"] != "Belice"]
+
         # Define el mapa de colores personalizado
         escala_de_color = self.generar_escala_colores(color_hex=self.color_base)
         cmap = colors.LinearSegmentedColormap.from_list("", escala_de_color)
 
         fig, ax = plt.subplots()  # Crea una figura y ejes con un tamaño específico
 
-        # Desactiva la leyenda, establece el color de borde a blanco y el grosor a 1.5
-        self.tracts.plot(column="valor", cmap=cmap, edgecolor="white", linewidth=0.7, legend=False, ax=ax)
+        # Para el mapa de las regiones de GT, desactiva la leyenda, establece el color de borde a blanco y el grosor a 1.5
+        solo_guatemala.plot(column="valor", cmap=cmap, edgecolor="white", linewidth=0.7, legend=False, ax=ax, aspect=1)
+        # Para el mapa de Belice, desactiva la leyenda, establece el color de fondo blanco y los bordes son dashed
+        solo_belice.plot(color = ["white"],
+                         edgecolor=["black"],
+                         linewidth=0.7,
+                         linestyle='dashed',
+                         legend=False,
+                         ax = ax,
+                         aspect=1)
         
         ax.axis('off')  # Desactiva los ejes
 
