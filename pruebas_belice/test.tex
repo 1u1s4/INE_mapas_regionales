@@ -1,0 +1,76 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[11.2pt,twoside]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{fontspec,xunicode}
+\setmainfont{Open Sans Condensed Light}
+\input{datos}
+\thispagestyle{empty} 
+\begin{document}
+
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics{mapa_sin_anotar}};
+    \begin{scope}[x={(image.south east)}, y={(image.north west)}]
+
+    % ###############REGION I############################## %
+    \draw [black] (0.43,0.225) -- (0.43, 0.07);
+    \filldraw [black] (0.43,0.225) circle (1.2pt);
+    \draw [black] (0.43,0.07) -- (0.62,0.07);
+    \node[align=center,text width=3cm, color=black] at (0.69, 0.07) {Región I \\ \regionUno};
+    
+    %#############REGION II################################# %
+	\filldraw [black] (0.52,0.44) circle (1.2pt);
+    \draw [black] (0.52,0.44) -- (0.52, 0.59);
+    \draw [black] (0.52,0.59) -- (0.1,0.59);
+    \node[align=center,text width=3cm, color=black] at (0.02,0.59) {Región II \\  \regionDos};
+    
+    %#############REGION III################################# %
+    \filldraw [black] (0.65,0.31) circle (1pt);
+    \draw [black] (0.65,0.31) -- (0.82,0.31);
+    \node[align=center,text width=3cm, color=black] at (0.89,0.31) {Región III \\  \regionTres};
+    
+    %#############REGION IV################################# %
+    \filldraw [black] (0.53,0.19) circle (1pt);
+    \draw [black] (0.53,0.19) -- (0.75,0.19);
+    \node[align=center,text width=3cm, color=black] at (0.83,0.19) {Región IV \\  \regionCuatro};
+    
+    % ###############REGION V############################## %
+    \filldraw [black] (0.34,0.14) circle (1pt);
+    \draw [black] (0.34,0.14) -- (0,0.14);
+%    \draw [black] (0.22,0.17) -- (0.22,0.24);
+    \node[align=center,text width=3cm, color=black] at (-0.08,0.14) {Región V \\ \regionCinco};
+    
+    % ###############REGION VI############################## %
+    \filldraw [black] (0.19,0.29) circle (1pt);
+    % \draw [black] (0.19,0.28) -- (0.19,0.29);
+   \draw [black] (0.19,0.29) -- (0,0.29);
+    \node[align=center,text width=3cm, color=black] at (-0.08,0.29) {Región VI \\ \regionSeis};
+    
+    % ###############REGION VII############################## %
+    \filldraw [black] (0.28,0.45) circle (1pt);
+    % \draw [black] (0.28,0.45) -- (0.28,0.50);
+    \draw [black] (0.28,0.45) -- (0,0.45);
+    \node[align=center,text width=3cm, color=black] at (-0.08,0.45) {Región VII \\ \regionSiete };    
+    
+    %#############REGION VIII################################# %
+    \filldraw [black] (0.54,0.75) circle (1pt);
+    \draw [black] (0.54,0.75) -- (0.1,0.75);
+    \node[align=center,text width=3cm, color=black] at (0.01,0.75) {Región VIII \\  \regionOcho };
+    
+    %################Barra#################################### %
+    \shade[left color=color2,right color=color1] (0.3,0.97) rectangle (0.77,0.99);
+    \node[align=right,text width=3cm, color=black] at (0.12,0.98) {Valor más grande};
+    \node[align=left,text width=3cm, color=black] at (0.95,0.98) {Valor más pequeño};
+    
+    % Dibuja un rectángulo
+    \draw (0.713, 0.8) rectangle (0.87, 0.56);
+    
+    % Añade un cuadro de texto
+    \node[align=center, text width=15 mm, color=black, font=\small] at (0.789, 0.68) {Diferendo Territorial Insular y Marítimo pendiente de resolver.};
+    
+    \end{scope}
+\end{tikzpicture}
+\end{document}
